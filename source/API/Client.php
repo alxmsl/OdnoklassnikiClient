@@ -196,10 +196,39 @@ final class Client extends OAuthClient {
 
     /**
      * Refresh current token method
+     * @throws RefreshTokenExpireException|UnknownClientErrorException
      */
     private function refreshToken() {
         $ExpiredToken = $this->getToken();
         $Token = $this->refresh($ExpiredToken->getRefreshToken());
-        $this->setToken($ExpiredToken->merge($Token));
+        switch (true) {
+            case $Token instanceof Token:
+                $this->setToken($ExpiredToken->merge($Token));
+                break;
+            default:
+                /** @var \Odnoklassniki\Client\OAuth\Response\Error $Error */
+                $Error = $Token;
+                throw ($Error->getError() == 'access_denied')
+                    ? new RefreshTokenExpireException()
+                    : new UnknownClientErrorException();
+        }
     }
 }
+
+/**
+ * Base Odnoklassniki client exception
+ * @package Odnoklassniki\Client\API
+ */
+class ClientException extends \Exception {}
+
+/**
+ * Unknown Odnoklassniki API client exception
+ * @package Odnoklassniki\Client\API
+ */
+final class UnknownClientErrorException extends ClientException {}
+
+/**
+ * Expired Odnoklassniki refresh token exception
+ * @package Odnoklassniki\Client\API
+ */
+final class RefreshTokenExpireException extends ClientException {}
