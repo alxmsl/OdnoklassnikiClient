@@ -126,6 +126,7 @@ final class Client extends OAuthClient {
         $data = $this->getParameters($method, $parameters);
 
         $signature = $this->getSignature($data);
+        var_dump($signature);
         $data['sig'] = $signature;
         $data['access_token'] = $this->getToken()->getAccessToken();
 
@@ -183,6 +184,14 @@ final class Client extends OAuthClient {
         foreach ($parameters as $parameter => $value) {
             $signature .= $parameter . '=' . $value;
         }
+
+        var_dump($this->getToken()->getAccessToken() . $this->getClientSecret());
+        var_dump(md5($this->getToken()->getAccessToken() . $this->getClientSecret()));
+
+        var_dump($signature . md5($this->getToken()->getAccessToken() . $this->getClientSecret()));
+        var_dump(md5($signature . md5($this->getToken()->getAccessToken() . $this->getClientSecret())));
+        die;
+
         return md5($signature . md5($this->getToken()->getAccessToken() . $this->getClientSecret()));
     }
 
