@@ -1,0 +1,22 @@
+{
+    "name": "alxmsl/odnoklassnikiclient",
+    "description": "Simple client for Odnoklassniki API",
+    "keywords": ["odnoklassniki", "ok", "odnoklassniki-api", "ok-api"],
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "alxmsl",
+            "email": "alexey.y.maslov@gmail.com"
+        }
+    ],
+    "support": {
+        "email": "alexey.y.maslov@gmail.com",
+        "issues": "https://github.com/alxmsl/OdnoklassnikiClient/issues"
+    },
+    "autoload": {
+        "psr-4": {"alxmsl\\Odnoklassniki\\": "source/"}
+    },
+    "require":{
+        "alxmsl/network": "1.0.1"
+    }
+}

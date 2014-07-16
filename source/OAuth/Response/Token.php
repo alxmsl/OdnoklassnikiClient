@@ -1,7 +1,8 @@
 <?php
 
-namespace Odnoklassniki\Client\OAuth\Response;
-use Odnoklassniki\Client\ObjectInitializedInterface;
+namespace alxmsl\Odnoklassniki\OAuth\Response;
+use alxmsl\Odnoklassniki\ObjectInitializedInterface;
+use stdClass;
 
 /**
  * Odnoklassniki authorization token
@@ -12,8 +13,8 @@ final class Token implements ObjectInitializedInterface {
     /**
      * Token types constants
      */
-    const   TYPE_NONE = '',
-            TYPE_SESSION = 'session';
+    const TYPE_NONE = '',
+          TYPE_SESSION = 'session';
 
     /**
      * @var string access token
@@ -94,10 +95,10 @@ final class Token implements ObjectInitializedInterface {
 
     /**
      * Initialization method
-     * @param \stdClass $Object object for initialization
+     * @param stdClass $Object object for initialization
      * @return ObjectInitializedInterface initialized object
      */
-    public static function initializeByObject(\stdClass $Object) {
+    public static function initializeByObject(stdClass $Object) {
         $Token = new self();
         if (isset($Object->token_type)) {
             $Token->setTokenType($Object->token_type);

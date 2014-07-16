@@ -1,8 +1,9 @@
 <?php
 
-namespace Odnoklassniki\Client\OAuth\Response;
-use Odnoklassniki\Client\InitializationInterface;
-use Odnoklassniki\Client\ObjectInitializedInterface;
+namespace alxmsl\Odnoklassniki\OAuth\Response;
+use alxmsl\Odnoklassniki\InitializationInterface;
+use alxmsl\Odnoklassniki\ObjectInitializedInterface;
+use stdClass;
 
 /**
  * Odnoklassnii OAuth error
@@ -20,9 +21,6 @@ final class Error implements InitializationInterface, ObjectInitializedInterface
      */
     private $description = '';
 
-    /**
-     * Locker
-     */
     private function __construct() {}
 
     /**
@@ -77,10 +75,10 @@ final class Error implements InitializationInterface, ObjectInitializedInterface
 
     /**
      * Initialization method
-     * @param \stdClass $Object object for initialization
+     * @param stdClass $Object object for initialization
      * @return Error initialized object
      */
-    public static function initializeByObject(\stdClass $Object) {
+    public static function initializeByObject(stdClass $Object) {
         $Error = new self();
         if (isset($Object->error)) {
             $Error->setError($Object->error);

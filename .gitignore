@@ -1,2 +1,4 @@
 .idea/
 test/*.prod.php
+vendor/
+composer.lock

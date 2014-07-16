@@ -1,7 +1,7 @@
 <?php
 
-namespace Odnoklassniki\Client\OAuth\Response;
-use Odnoklassniki\Client\InitializationInterface;
+namespace alxmsl\Odnoklassniki\OAuth\Response;
+use alxmsl\Odnoklassniki\InitializationInterface;
 
 /**
  * Odnoklassniki OAuth authorization code

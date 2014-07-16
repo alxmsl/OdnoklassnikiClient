@@ -1,6 +1,7 @@
 <?php
 
-namespace Odnoklassniki\Client;
+namespace alxmsl\Odnoklassniki;
+use stdClass;
 
 /**
  * Interface for self-initialization objects by standard classes
@@ -10,8 +11,8 @@ namespace Odnoklassniki\Client;
 interface ObjectInitializedInterface {
     /**
      * Initialization method
-     * @param \stdClass $Object object for initialization
+     * @param stdClass $Object object for initialization
      * @return ObjectInitializedInterface initialized object
      */
-    public static function initializeByObject(\stdClass $Object);
+    public static function initializeByObject(stdClass $Object);
 }

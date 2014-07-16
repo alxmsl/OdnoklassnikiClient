@@ -1,11 +1,10 @@
 <?php
 
-namespace Odnoklassniki\Client\OAuth;
-
-use Network\Http\Request;
-use Odnoklassniki\Client\OAuth\Response\Error;
-use Odnoklassniki\Client\OAuth\Response\ResponseFactory;
-use Odnoklassniki\Client\OAuth\Response\Token;
+namespace alxmsl\Odnoklassniki\OAuth;
+use alxmsl\Network\Http\Request;
+use alxmsl\Odnoklassniki\OAuth\Response\Error;
+use alxmsl\Odnoklassniki\OAuth\Response\ResponseFactory;
+use alxmsl\Odnoklassniki\OAuth\Response\Token;
 
 /**
  * Odnoklassniki OAuth client
@@ -16,26 +15,26 @@ class Client {
     /**
      * Response type constants
      */
-    const RESPONSE_TYPE_CODE  = 'code';
+    const RESPONSE_TYPE_CODE = 'code';
 
     /**
      * Available grant type constants
      */
-    const   GRANT_TYPE_AUTHORIZATION_CODE = 'authorization_code',
-            GRANT_TYPE_REFRESH_TOKEN = 'refresh_token';
+    const GRANT_TYPE_AUTHORIZATION_CODE = 'authorization_code',
+          GRANT_TYPE_REFRESH_TOKEN      = 'refresh_token';
 
     /**
      * Available scope constants
      */
-    const   SCOPE_VALUABLE_ACCESS   = 'VALUABLE ACCESS',
-            SCOPE_SET_STATUS        = 'SET STATUS',
-            SCOPE_PHOTO_CONTENT     = 'PHOTO CONTENT';
+    const SCOPE_VALUABLE_ACCESS = 'VALUABLE ACCESS',
+          SCOPE_SET_STATUS      = 'SET STATUS',
+          SCOPE_PHOTO_CONTENT   = 'PHOTO CONTENT';
 
     /**
      * OK API endpoints
      */
-    const   ENDPOINT_AUTHORIZE_REQUEST  = 'http://www.odnoklassniki.ru/oauth/authorize',
-            ENDPOINT_TOKEN_REQUEST      = 'http://api.odnoklassniki.ru/oauth/token.do';
+    const ENDPOINT_AUTHORIZE_REQUEST = 'http://www.odnoklassniki.ru/oauth/authorize',
+          ENDPOINT_TOKEN_REQUEST     = 'http://api.odnoklassniki.ru/oauth/token.do';
 
     /**
      * Mobile authorization page layout constant

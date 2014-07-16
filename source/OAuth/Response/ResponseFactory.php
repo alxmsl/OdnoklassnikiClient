@@ -1,6 +1,6 @@
 <?php
 
-namespace Odnoklassniki\Client\OAuth\Response;
+namespace alxmsl\Odnoklassniki\OAuth\Response;
 
 /**
  * Odnoklassniki OAuth server responses factory

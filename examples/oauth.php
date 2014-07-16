@@ -6,19 +6,21 @@
  */
 
 include('../source/Autoloader.php');
-include '../lib/Network/source/Autoloader.php';
+include '../vendor/alxmsl/network/source/Autoloader.php';
+
+use alxmsl\Odnoklassniki\OAuth\Client;
 
 // Create and initialize OAuth client
-$Client = new Odnoklassniki\Client\OAuth\Client();
+$Client = new Client();
 $Client->setClientId(1234567890)
     ->setClientSecret('C11eNt_SEcREt')
     ->setRedirectUri('http://redirect.uri');
 
 // Get authorization url
 $url = $Client->createAuthUrl(array(
-    \Odnoklassniki\Client\OAuth\Client::SCOPE_VALUABLE_ACCESS,
-    \Odnoklassniki\Client\OAuth\Client::SCOPE_SET_STATUS,
-    \Odnoklassniki\Client\OAuth\Client::SCOPE_PHOTO_CONTENT,
+    Client::SCOPE_VALUABLE_ACCESS,
+    Client::SCOPE_SET_STATUS,
+    Client::SCOPE_PHOTO_CONTENT,
 ), true);
 var_dump($url);
 

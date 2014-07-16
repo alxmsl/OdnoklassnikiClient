@@ -1,6 +1,6 @@
 <?php
 
-namespace Odnoklassniki\Client;
+namespace alxmsl\Odnoklassniki;
 
 /**
  * Interface for self-initialization objects

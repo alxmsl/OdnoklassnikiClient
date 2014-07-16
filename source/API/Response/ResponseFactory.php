@@ -1,6 +1,7 @@
 <?php
 
-namespace Odnoklassniki\Client\API\Response;
+namespace alxmsl\Odnoklassniki\API\Response;
+use stdClass;
 
 /**
  * Odnoklassniki API response factory
@@ -11,7 +12,7 @@ final class ResponseFactory {
     /**
      * Create OK OAuth response instance
      * @param string $string response data
-     * @return Error|\stdClass response instance
+     * @return Error|stdClass response instance
      */
     public static function createResponse($string) {
         $Object = json_decode($string);

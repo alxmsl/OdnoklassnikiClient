@@ -1,11 +1,15 @@
 <?php
 
-namespace Odnoklassniki\Client\API;
-
-use Odnoklassniki\Client\API\Response\Error;
-use Odnoklassniki\Client\API\Response\ResponseFactory;
-use Odnoklassniki\Client\OAuth\Response\Token;
-use Odnoklassniki\Client\OAuth\Client as OAuthClient;
+namespace alxmsl\Odnoklassniki\API;
+use alxmsl\Network\Http\Request;
+use alxmsl\Odnoklassniki\API\Exception\RefreshTokenExpireException;
+use alxmsl\Odnoklassniki\API\Exception\UnknownClientErrorException;
+use alxmsl\Odnoklassniki\API\Response\Error;
+use alxmsl\Odnoklassniki\API\Response\ResponseFactory;
+use alxmsl\Odnoklassniki\OAuth\Response\Error as OAuthError;
+use alxmsl\Odnoklassniki\OAuth\Response\Token;
+use alxmsl\Odnoklassniki\OAuth\Client as OAuthClient;
+use stdClass;
 
 /**
  * Odnoklassniki API client
@@ -16,14 +20,14 @@ final class Client extends OAuthClient {
     /**
      * API endpoint constants
      */
-    const   ENDPOINT_API_URL = 'http://api.odnoklassniki.ru',
-            ENDPOINT_API_GET = 'http://api.odnoklassniki.ru/fb.do';
+    const ENDPOINT_API_URL = 'http://api.odnoklassniki.ru',
+          ENDPOINT_API_GET = 'http://api.odnoklassniki.ru/fb.do';
 
     /**
      * API requests types constants
      */
-    const   TYPE_GET = 0,   // for queries over fb.do
-            TYPE_URL = 1;   // for queries over method resource
+    const TYPE_GET = 0, // for queries over fb.do
+          TYPE_URL = 1; // for queries over method resource
 
     /**
      * @var int static queries counter
@@ -87,7 +91,7 @@ final class Client extends OAuthClient {
      * @return Client self
      */
     public function setType($type) {
-        $this->type = $type;
+        $this->type = (int) $type;
         return $this;
     }
 
@@ -103,7 +107,7 @@ final class Client extends OAuthClient {
      * Confidence method call. Method tries to get new access token, if needed
      * @param string $method method name
      * @param array $parameters call parameters
-     * @return Error|\stdClass error or result instance
+     * @return Error|stdClass error or result instance
      */
     public function callConfidence($method, array $parameters = array()) {
         $Result = $this->call($method, $parameters);
@@ -120,7 +124,7 @@ final class Client extends OAuthClient {
      * Direct method call
      * @param string $method method name
      * @param array $parameters call parameters
-     * @return Error|\stdClass error or result instance
+     * @return Error|stdClass error or result instance
      */
     public function call($method, array $parameters = array()) {
         $data = $this->getParameters($method, $parameters);
@@ -140,7 +144,7 @@ final class Client extends OAuthClient {
     /**
      * Override method for request creation
      * @param string $method OK API method name
-     * @return \Network\Http\Request request instance
+     * @return Request request instance
      */
     protected function getMethodRequest($method) {
         switch ($this->getType()) {
@@ -184,14 +188,6 @@ final class Client extends OAuthClient {
         foreach ($parameters as $parameter => $value) {
             $signature .= $parameter . '=' . $value;
         }
-
-        var_dump($this->getToken()->getAccessToken() . $this->getClientSecret());
-        var_dump(md5($this->getToken()->getAccessToken() . $this->getClientSecret()));
-
-        var_dump($signature . md5($this->getToken()->getAccessToken() . $this->getClientSecret()));
-        var_dump(md5($signature . md5($this->getToken()->getAccessToken() . $this->getClientSecret())));
-        die;
-
         return md5($signature . md5($this->getToken()->getAccessToken() . $this->getClientSecret()));
     }
 
@@ -215,7 +211,7 @@ final class Client extends OAuthClient {
                 $this->setToken($ExpiredToken->merge($Token));
                 break;
             default:
-                /** @var \Odnoklassniki\Client\OAuth\Response\Error $Error */
+                /** @var OAuthError $Error */
                 $Error = $Token;
                 throw ($Error->getError() == 'access_denied')
                     ? new RefreshTokenExpireException()
@@ -223,21 +219,3 @@ final class Client extends OAuthClient {
         }
     }
 }
-
-/**
- * Base Odnoklassniki client exception
- * @package Odnoklassniki\Client\API
- */
-class ClientException extends \Exception {}
-
-/**
- * Unknown Odnoklassniki API client exception
- * @package Odnoklassniki\Client\API
- */
-final class UnknownClientErrorException extends ClientException {}
-
-/**
- * Expired Odnoklassniki refresh token exception
- * @package Odnoklassniki\Client\API
- */
-final class RefreshTokenExpireException extends ClientException {}
