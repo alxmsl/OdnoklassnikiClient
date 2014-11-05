@@ -217,12 +217,19 @@ final class Client extends OAuthClient {
             case $Token instanceof Token:
                 $this->setToken($ExpiredToken->merge($Token));
                 break;
-            default:
-                /** @var OAuthError $Error */
+            case $Token instanceof OAuthError:
                 $Error = $Token;
-                throw ($Error->getError() == 'access_denied')
-                    ? new RefreshTokenExpireException()
-                    : new UnknownClientErrorException();
+                switch ($Error->getError()) {
+                    case 'access_denied':
+                    case 'invalid_token':
+                        throw new RefreshTokenExpireException();
+                    default:
+                        throw new UnknownClientErrorException(sprintf('Error: %s description: %s', $Error->getError(),
+                            $Error->getDescription()));
+                }
+                break;
+            default:
+                throw new UnknownClientErrorException('Unknown response format: %s',  json_encode($Token));
         }
     }
 }
