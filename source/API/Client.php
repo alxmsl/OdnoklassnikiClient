@@ -224,12 +224,12 @@ final class Client extends OAuthClient {
                     case 'invalid_token':
                         throw new RefreshTokenExpireException();
                     default:
-                        throw new UnknownClientErrorException('Error: ' . $Error->getError()
-                            . ' descr: ' . $Error->getDescription());
+                        throw new UnknownClientErrorException(sprintf('Error: %s description: %s', $Error->getError(),
+                            $Error->getDescription()));
                 }
                 break;
             default:
-                throw new UnknownClientErrorException('Unknown response format:' . json_encode($Token));
+                throw new UnknownClientErrorException('Unknown response format: %s',  json_encode($Token));
         }
     }
 }
