@@ -137,7 +137,6 @@ final class Client extends OAuthClient {
         $data = $this->getParameters($method, $parameters);
 
         $signature = $this->getSignature($data);
-        var_dump($signature);
         $data['sig'] = $signature;
         $data['access_token'] = $this->getToken()->getAccessToken();
 
