@@ -17,6 +17,6 @@
         "psr-4": {"alxmsl\\Odnoklassniki\\": "source/"}
     },
     "require":{
-        "alxmsl/network": "1.0.1"
+        "alxmsl/network": "1.1.*"
     }
 }
