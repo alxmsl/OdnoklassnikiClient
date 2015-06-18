@@ -6,15 +6,14 @@
  * To Public License, Version 2, as published by Sam Hocevar. See
  * http://www.wtfpl.net/ for more details.
  *
- * Odnoklassniki API example
+ * Odnoklassniki API method users.getCurrentUser example
  * @author alxmsl
  * @date 8/13/13
  */
 
-include('../source/Autoloader.php');
-include '../vendor/alxmsl/network/source/Autoloader.php';
+include '../vendor/autoload.php';
 
-use alxmsl\Odnoklassniki\OAuth\Response\Token;
+use alxmsl\Odnoklassniki\OAuth2\Response\Token;
 use alxmsl\Odnoklassniki\API\Client;
 
 // Create authorization token instance
@@ -30,21 +29,6 @@ $Client->setApplicationKey('4Pp1IC4t10n_KEy')
     ->setClientId(1234567890)
     ->setClientSecret('C11eNt_SEcREt');
 
-// Check if current user has current application
-$Result = $Client->callConfidence('users.isAppUser');
-var_dump($Result);
-
 // Get current user info
-$Result = $Client->callConfidence('users.getCurrentUser');
-var_dump($Result);
-
-// Get current user big size avatar
-$Result = $Client->callConfidence('users.getInfo', array(
-    'uids'   => 1,
-    'fields' => 'pic_4',
-));
-var_dump($Result);
-
-// Get user photos
-$Result = $Client->callConfidence('photos.getPhotos');
-var_dump($Result);
+$Result = $Client->call('users.getCurrentUser');
+print_r($Result);

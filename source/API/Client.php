@@ -8,14 +8,15 @@
  */
 
 namespace alxmsl\Odnoklassniki\API;
+
 use alxmsl\Network\Http\Request;
 use alxmsl\Odnoklassniki\API\Exception\RefreshTokenExpireException;
 use alxmsl\Odnoklassniki\API\Exception\UnknownClientErrorException;
 use alxmsl\Odnoklassniki\API\Response\Error;
 use alxmsl\Odnoklassniki\API\Response\ResponseFactory;
-use alxmsl\Odnoklassniki\OAuth\Response\Error as OAuthError;
-use alxmsl\Odnoklassniki\OAuth\Response\Token;
-use alxmsl\Odnoklassniki\OAuth\Client as OAuthClient;
+use alxmsl\Odnoklassniki\OAuth2\Response\Error as OAuthError;
+use alxmsl\Odnoklassniki\OAuth2\Response\Token;
+use alxmsl\Odnoklassniki\OAuth2\Client as OAuthClient;
 use stdClass;
 
 /**

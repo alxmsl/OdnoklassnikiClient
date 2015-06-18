@@ -16,7 +16,8 @@
     "autoload": {
         "psr-4": {"alxmsl\\Odnoklassniki\\": "source/"}
     },
-    "require":{
-        "alxmsl/network": "1.1.*"
+    "require": {
+        "alxmsl/network": ">=1.1.0",
+        "alxmsl/cli": ">=1.0.2"
     }
 }

@@ -7,7 +7,8 @@
  * http://www.wtfpl.net/ for more details.
  */
 
-namespace alxmsl\Odnoklassniki\OAuth\Response;
+namespace alxmsl\Odnoklassniki\OAuth2\Response;
+
 use alxmsl\Odnoklassniki\InitializationInterface;
 use alxmsl\Odnoklassniki\ObjectInitializedInterface;
 use stdClass;

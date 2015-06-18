@@ -7,7 +7,8 @@
  * http://www.wtfpl.net/ for more details.
  */
 
-namespace alxmsl\Odnoklassniki\OAuth\Response;
+namespace alxmsl\Odnoklassniki\OAuth2\Response;
+
 use alxmsl\Odnoklassniki\ObjectInitializedInterface;
 use stdClass;
 
@@ -20,7 +21,7 @@ final class Token implements ObjectInitializedInterface {
     /**
      * Token types constants
      */
-    const TYPE_NONE = '',
+    const TYPE_NONE    = '',
           TYPE_SESSION = 'session';
 
     /**
@@ -130,5 +131,17 @@ final class Token implements ObjectInitializedInterface {
         $this->setAccessToken($Token->getAccessToken())
             ->setTokenType($Token->getTokenType());
         return $this;
+    }
+
+    public function __toString() {
+        $format = <<<'EOD'
+    access token:  %s
+    refresh token: %s
+    token type:    %s
+EOD;
+        return sprintf($format
+            , $this->getAccessToken()
+            , $this->getRefreshToken()
+            , $this->getTokenType());
     }
 }
