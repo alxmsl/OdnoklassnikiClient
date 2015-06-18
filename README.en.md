@@ -1,5 +1,7 @@
-OdnoklassnikiClient [🇷🇺](/README.md)
+OdnoklassnikiClient
 ===================
+
+[🇷🇺](/README.md)
 
 Simple Odnoklassniki API client for:
 
