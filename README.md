@@ -1,70 +1,120 @@
-OdnoklassnikiClient
+OdnoklassnikiClient [🇬🇧](/README.en.md)
 ===================
 
-Simple client for Odnoklassniki API
+Клиент для работы с API социальной сети "Одноклассники". Клиент позволяет выполнять следующее:
 
-Installation
+* [Авторизацию](#oauth2) OAuth2
+* [Вызовы](#api) методов [OK REST API](http://apiok.ru/wiki/display/api/Odnoklassniki+REST+API+ru)
+
+Установка
 -------
 
-Require packet in a composer.json
+Просто подключите библиотеку нужной версии в файле `composer.json`
 
-    "alxmsl/odnoklassnikiclient": ">=1.0.0"
+```
+    "alxmsl/odnoklassnikiclient": "1.0.0"
+```
 
-Run Composer: `php composer.phar install`
+Затем запустите обновление кода `composer update`
 
-OAuth example
--------
+## <a name="oauth2"></a> Авторизация OAuth2
 
-Firstly you will need to initialize OAuth client
+Для авторизации через [OAuth2 в "Одноклассниках"](http://apiok.ru/wiki/pages/viewpage.action?pageId=42476652) необходимо
+ создать экземпляр класса [OAuth\Client](/source/OAuth2/Client.php) и, с необходимами правами для приложения, получить 
+ код авторизации, выполнив авторизацию через браузер, пройдя по созданной методом `createAuthUrl` ссылке 
 
-    use alxmsl\Odnoklassniki\OAuth\Client;
-
+```
     $Client = new Client();
-    $Client->setClientId(1234567890)
-        ->setClientSecret('C11eNt_SEcREt')
-        ->setRedirectUri('http://redirect.uri');
+    $Client->setClientId(<идентификатор прилоежния>)
+        ->setRedirectUri(<URI переадресации для кода>);
+    
+    $url = $Client->createAuthUrl(
+        <массив интересующих прав>
+        , <флаг необходимости мобильного лейаута для авторизации в браузере>);
+```
 
-then get authorization url with needed scopes
+По коду можно выполнить авторизацию и получить токен доступа и токен обновления (токена доступа)
 
-    $url = $Client->createAuthUrl(array(
-        Client::SCOPE_VALUABLE_ACCESS,
-        Client::SCOPE_SET_STATUS,
-        Client::SCOPE_PHOTO_CONTENT,
-    ), true);
-
-Use browser to get authorization code and token
-
-    $Token = $Client->authorize('aUTH0R1zAt10N_c0dE');
-
-Time-to-time update your token
-
-    $Token = $Client->refresh('ReFRE5H_t0Ken');
-
-API usage example
--------
-
-Just initialize API client instance
-
+```
     $Client = new Client();
-    $Client->setApplicationKey('4Pp1IC4t10n_KEy')
-        ->setToken($Token)
-        ->setClientId(1234567890)
-        ->setClientSecret('C11eNt_SEcREt');
+    $Client->setClientId(<идентификатор прилоежния>)
+        ->setClientSecret(<секретный ключ приложения>)
+        ->setRedirectUri(<URI переадресации для кода>);
+    $Token = $Client->authorize(<код авторизации>);
+```
 
-You will need to use OAuth token from previous example. Or create it from some storage
+Пример получения ссылки для авторизации можно посмотреть в файле [oauth2.uri.php](/examples/oauth2.uri.php), а получение 
+ токена доступа в файле [oauth2.authorize.php](/examples/oauth2.authorize.php)
 
+Авторизацию также можно выполнить через скрипт [authorize.php](/bin/authorize.php)
+
+```
+$ php bin/authorize.php -h
+Using: /usr/local/bin/php bin/authorize.php [-h|--help] [-o|--code] -c|--client [-r|--redirect] [-s|--scopes] -e|--secret
+-h, --help  - show help
+-o, --code  - authorization code
+-c, --client  - client id
+-r, --redirect  - redirect uri
+-s, --scopes  - grant scopes
+-e, --secret  - client secret
+```
+
+Обновить токен доступа можно через скрипт [refresh.php](/bin/refresh.php)
+
+```
+$ php bin/refresh.php -h
+Using: /usr/local/bin/php bin/refresh.php [-h|--help] -c|--client -r|--redirect -t|--token -s|--secret
+-h, --help  - show help
+-c, --client  - client id
+-r, --redirect  - redirect uri
+-t, --token  - refresh token
+-s, --secret  - client secret
+```
+
+## <a name="api"></a> Вызовы методов OK REST API
+
+Для обращения к методам [OK REST API](http://apiok.ru/wiki/display/api/Odnoklassniki+REST+API+ru) необходимо создать 
+ экземпляр клиента [API\Client](/source/API/Client.php) и, определив токен доступа, начать дергать метод `call`. А можно 
+ дергать `callConfidence`, если за время подергивания планируется истечение авторизованной сессии токена доступа 
+
+```
     $Token = new Token();
-    $Token->setAccessToken('4cCE5s_T0KEn')
-        ->setRefreshToken('ReFRE5H_t0Ken')
+    $Token->setAccessToken(<токен доступа>)
+        ->setRefreshToken(<токен обновления>)
         ->setTokenType(Token::TYPE_SESSION);
+    
+    $Client = new Client();
+    $Client->setApplicationKey(<ключ приложения>)
+        ->setToken($Token)
+        ->setClientId(<идентификатор приложения>)
+        ->setClientSecret(<секретный ключ приложения>);
+    
+    $Result = $Client->call(<метод>, <массив параметров вызова>);
+    $Result = $Client->callConfidence(<метод>, <массив параметров вызова>);
+```
 
-And now you can call [Odnoklassniki API](http://apiok.ru/wiki/display/api/Odnoklassniki+REST+API) methods
+Примеры использования `call` и `callConfidence` можно подсмотреть в файлах 
+ [api.users.getCurrentUser.php](/examples/api.users.getCurrentUser.php) и 
+ [api.users.getInfo.php](/examples/api.users.getInfo.php)
+ 
+Аналогично, можно использовать скрипт выполнения метода OK REST API [call.php](/bin/call.php)
 
-    $Result = $Client->callConfidence('users.getCurrentUser');
+```
+$ php bin/call.php -h
+Using: /usr/local/bin/php bin/call.php [-h|--help] -c|--client -d|--data -k|--key -m|--method -s|--secret -t|--token
+-h, --help  - show help
+-c, --client  - client id
+-d, --data  - API method parameters (JSON)
+-k, --key  - application key
+-m, --method  - API method name
+-s, --secret  - client secret
+-t, --token  - access token
+```
 
-License
+Лицензия
 -------
-Copyright © 2014 Alexey Maslov <alexey.y.maslov@gmail.com>
-This work is free. You can redistribute it and/or modify it under the
-terms of the Do What The Fuck You Want To Public License, Version 2,
-as published by Sam Hocevar. See the COPYING file for more details.
+
+Авторское право © 2014-2015 Alexey Maslov <alexey.y.maslov@gmail.com>
+Это свободный продукт. Вы можете распространять его и/или изменять его в соответсвии
+с правилами "Do What The Fuck You Want To Public License", Version 2, 
+опубликованной Сэмом Хосеваром. Детали в файле COPYING

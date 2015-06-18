@@ -16,7 +16,7 @@ use alxmsl\Cli\CommandPosix;
 use alxmsl\Cli\Exception\RequiredOptionException;
 use alxmsl\Cli\Option;
 use alxmsl\Odnoklassniki\API\Client;
-use alxmsl\Odnoklassniki\OAuth\Response\Token;
+use alxmsl\Odnoklassniki\OAuth2\Response\Token;
 
 $accessToken    = '';
 $applicationKey = '';
@@ -31,7 +31,7 @@ $Command->appendParameter(new Option('client', 'c', 'client id', Option::TYPE_ST
     , function($name, $value) use (&$clientId) {
         $clientId = $value;
     });
-$Command->appendParameter(new Option('data', 'd', 'API method parameters', Option::TYPE_STRING, true)
+$Command->appendParameter(new Option('data', 'd', 'API method parameters (JSON)', Option::TYPE_STRING, true)
     , function($name, $value) use (&$methodData) {
         $methodData = json_decode($value, true);
     });

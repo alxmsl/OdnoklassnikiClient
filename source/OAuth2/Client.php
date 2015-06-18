@@ -7,12 +7,12 @@
  * http://www.wtfpl.net/ for more details.
  */
 
-namespace alxmsl\Odnoklassniki\OAuth;
+namespace alxmsl\Odnoklassniki\OAuth2;
 
 use alxmsl\Network\Http\Request;
-use alxmsl\Odnoklassniki\OAuth\Response\Error;
-use alxmsl\Odnoklassniki\OAuth\Response\ResponseFactory;
-use alxmsl\Odnoklassniki\OAuth\Response\Token;
+use alxmsl\Odnoklassniki\OAuth2\Response\Error;
+use alxmsl\Odnoklassniki\OAuth2\Response\ResponseFactory;
+use alxmsl\Odnoklassniki\OAuth2\Response\Token;
 
 /**
  * Odnoklassniki OAuth client

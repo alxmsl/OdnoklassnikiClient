@@ -15,8 +15,8 @@ include __DIR__ . '/../vendor/autoload.php';
 use alxmsl\Cli\CommandPosix;
 use alxmsl\Cli\Exception\RequiredOptionException;
 use alxmsl\Cli\Option;
-use alxmsl\Odnoklassniki\OAuth\Client;
-use alxmsl\Odnoklassniki\OAuth\Response\Token;
+use alxmsl\Odnoklassniki\OAuth2\Client;
+use alxmsl\Odnoklassniki\OAuth2\Response\Token;
 
 $clientId     = '';
 $clientSecret = '';

@@ -7,7 +7,7 @@
  * http://www.wtfpl.net/ for more details.
  */
 
-namespace alxmsl\Odnoklassniki\OAuth\Response;
+namespace alxmsl\Odnoklassniki\OAuth2\Response;
 
 /**
  * Odnoklassniki OAuth server responses factory
