@@ -8,6 +8,7 @@
  */
 
 namespace alxmsl\Odnoklassniki\OAuth;
+
 use alxmsl\Network\Http\Request;
 use alxmsl\Odnoklassniki\OAuth\Response\Error;
 use alxmsl\Odnoklassniki\OAuth\Response\ResponseFactory;
@@ -72,7 +73,6 @@ class Client {
      * @var int request timeout, seconds
      */
     private $requestTimeout = 0;
-
 
     /**
      * Getter for the request

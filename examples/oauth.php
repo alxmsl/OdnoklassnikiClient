@@ -11,8 +11,7 @@
  * @date 8/12/13
  */
 
-include('../source/Autoloader.php');
-include '../vendor/alxmsl/network/source/Autoloader.php';
+include '../vendor/autoload.php';
 
 use alxmsl\Odnoklassniki\OAuth\Client;
 

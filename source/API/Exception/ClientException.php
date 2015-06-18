@@ -8,10 +8,11 @@
  */
 
 namespace alxmsl\Odnoklassniki\API\Exception;
+
 use Exception;
 
 /**
  * Base Odnoklassniki client exception
+ * @author alxmsl
  */
 class ClientException extends Exception {}
- 

@@ -8,6 +8,7 @@
  */
 
 namespace alxmsl\Odnoklassniki\API;
+
 use alxmsl\Network\Http\Request;
 use alxmsl\Odnoklassniki\API\Exception\RefreshTokenExpireException;
 use alxmsl\Odnoklassniki\API\Exception\UnknownClientErrorException;

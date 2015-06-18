@@ -11,5 +11,6 @@ namespace alxmsl\Odnoklassniki\API\Exception;
 
 /**
  * Expired Odnoklassniki refresh token exception
+ * @author alxmsl
  */
 final class RefreshTokenExpireException extends ClientException {}

@@ -8,6 +8,7 @@
  */
 
 namespace alxmsl\Odnoklassniki\API\Response;
+
 use alxmsl\Odnoklassniki\ObjectInitializedInterface;
 use stdClass;
 

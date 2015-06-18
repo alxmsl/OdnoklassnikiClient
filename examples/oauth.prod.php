@@ -11,22 +11,21 @@
  * @date 8/12/13
  */
 
-include('../source/Autoloader.php');
-include '../vendor/alxmsl/network/source/Autoloader.php';
+include '../vendor/autoload.php';
 
 use alxmsl\Odnoklassniki\OAuth\Client;
 
 $Client = new Client();
 $Client->setClientId(192696576)
     ->setClientSecret('A9872F0F0DA2EA47EB876D85')
-    ->setRedirectUri('http://www.odnoklassniki.ru/games/topfacecom');
+    ->setRedirectUri('http://ok.ru/games/topfacecom');
 
 $url = $Client->createAuthUrl(array(
     Client::SCOPE_VALUABLE_ACCESS,
     Client::SCOPE_SET_STATUS,
     Client::SCOPE_PHOTO_CONTENT,
 ), true);
-//var_dump($url);
+var_dump($url);
 
 //$r = $Client->authorize('997f7478cabbfeb72aad44fd0ffc69e4dc7c1434f2b4788fb295728cb.8_bfaefcf804b7eab58ea512b4572d2c2f_1376395172');
 //var_dump($r);
@@ -42,5 +41,5 @@ string(7) "session"
 }
 */
 
-$r = $Client->refresh('482c3f6cf867ccd96b322cb18bd1a7110b_552410809159_1376395181');
-var_dump($r);
+//$r = $Client->refresh('482c3f6cf867ccd96b322cb18bd1a7110b_552410809159_1376395181');
+//var_dump($r);

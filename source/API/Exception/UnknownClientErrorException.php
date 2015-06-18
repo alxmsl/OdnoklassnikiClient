@@ -11,6 +11,6 @@ namespace alxmsl\Odnoklassniki\API\Exception;
 
 /**
  * Unknown Odnoklassniki API client exception
+ * @author alxmsl
  */
 final class UnknownClientErrorException extends ClientException {}
- 
