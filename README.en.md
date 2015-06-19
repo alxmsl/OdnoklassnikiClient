@@ -35,7 +35,7 @@ To authorize client via [Odnoklassniki OAuth2](http://apiok.ru/wiki/display/api/
         , <use mobile layout or not>);
 ```
 
-Compete authorization in browser and give authorization code. With this code you could get access token
+Compete authorization in browser and give authorization code. With this code you could get an access token
 
 ```
     $Client = new Client();
@@ -46,7 +46,7 @@ Compete authorization in browser and give authorization code. With this code you
 ```
 
 You could see example [oauth2.uri.php](/examples/oauth2.uri.php) about uri creation, and
- [oauth2.authorize.php](/examples/oauth2.authorize.php) about code authentication. Already you could use completed 
+ [oauth2.authorize.php](/examples/oauth2.authorize.php) about code authentication. Also you could use completed 
  script [authorize.php](/bin/authorize.php)
 
 ```
