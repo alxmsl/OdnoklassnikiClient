@@ -2,6 +2,7 @@ OdnoklassnikiClient
 ===================
 
 [🇬🇧](/README.en.md)
+[![Build Status](https://travis-ci.org/alxmsl/OdnoklassnikiClient.png?branch=master)](http://travis-ci.org/alxmsl/OdnoklassnikiClient)
 
 Клиент для работы с API социальной сети "Одноклассники". Клиент позволяет выполнять следующее:
 

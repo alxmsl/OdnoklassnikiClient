@@ -2,6 +2,7 @@ OdnoklassnikiClient
 ===================
 
 [🇷🇺](/README.md)
+[![Build Status](https://travis-ci.org/alxmsl/OdnoklassnikiClient.png?branch=master)](http://travis-ci.org/alxmsl/OdnoklassnikiClient)
 
 Simple Odnoklassniki API client for:
 
