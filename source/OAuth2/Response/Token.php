@@ -102,9 +102,8 @@ final class Token implements ObjectInitializedInterface {
     }
 
     /**
-     * Initialization method
-     * @param stdClass $Object object for initialization
-     * @return ObjectInitializedInterface initialized object
+     * @inheritdoc
+     * @return $this
      */
     public static function initializeByObject(stdClass $Object) {
         $Token = new self();

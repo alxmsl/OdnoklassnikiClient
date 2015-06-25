@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         verbose="true" >
+    <testsuites>
+        <testsuite name="API">
+            <directory>./test/API</directory>
+        </testsuite>
+        <testsuite name="OAuth2">
+            <directory>./test/OAuth2</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

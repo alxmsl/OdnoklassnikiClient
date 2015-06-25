@@ -19,6 +19,24 @@ OdnoklassnikiClient
 
 Затем запустите обновление кода `composer update`
 
+Тестирование
+---
+
+Для проверки работоспособности библиотеки, можно запустить юнит-тестирование командой `phpunit`
+
+```
+    $ phpunit
+    PHPUnit 4.7.5 by Sebastian Bergmann and contributors.
+    
+    Runtime:	PHP 5.5.23
+    
+    ....................
+    
+    Time: 149 ms, Memory: 6.00Mb
+    
+    OK (20 tests, 100 assertions)
+```
+
 ## <a name="oauth2"></a> Авторизация OAuth2
 
 Для авторизации через [OAuth2 в "Одноклассниках"](http://apiok.ru/wiki/pages/viewpage.action?pageId=42476652) необходимо

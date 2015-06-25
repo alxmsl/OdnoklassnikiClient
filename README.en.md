@@ -19,6 +19,24 @@ Require packet in your `composer.json`
 
 ...and update composer: `composer update`
 
+Tests
+---
+
+For completely tests running just call `phpunit` command
+
+```
+    $ phpunit
+    PHPUnit 4.7.5 by Sebastian Bergmann and contributors.
+    
+    Runtime:	PHP 5.5.23
+    
+    ....................
+    
+    Time: 149 ms, Memory: 6.00Mb
+    
+    OK (20 tests, 100 assertions)
+```
+
 ## <a name="oauth2"></a> OAuth2 authorization
 
 To authorize client via [Odnoklassniki OAuth2](http://apiok.ru/wiki/display/api/Authorization+OAuth+2.0) you need to 
