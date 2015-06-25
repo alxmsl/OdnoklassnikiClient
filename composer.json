@@ -2,7 +2,7 @@
     "name": "alxmsl/odnoklassnikiclient",
     "description": "Simple client for Odnoklassniki API",
     "keywords": ["odnoklassniki", "ok", "odnoklassniki-api", "ok-api"],
-    "license": "WTFPL",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "alxmsl",

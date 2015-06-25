@@ -135,7 +135,8 @@ Using: /usr/local/bin/php bin/call.php [-h|--help] -c|--client -d|--data -k|--ke
 Лицензия
 -------
 
-Авторское право © 2014-2015 Alexey Maslov <alexey.y.maslov@gmail.com>
-Это свободный продукт. Вы можете распространять его и/или изменять его в соответсвии
-с правилами "Do What The Fuck You Want To Public License", Version 2, 
-опубликованной Сэмом Хосеваром. Детали в файле COPYING
+Авторское право © 2015 Alexey Maslov <alexey.y.maslov@gmail.com>
+Лицензировано Apache License, Version 2.0. С полным текстом лицензии 
+можно ознакомиться по ссылке
+
+    http://www.apache.org/licenses/LICENSE-2.0
