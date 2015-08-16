@@ -7,6 +7,7 @@ OdnoklassnikiClient
 [![Latest Stable Version](https://poser.pugx.org/alxmsl/odnoklassnikiclient/v/stable)](https://packagist.org/packages/alxmsl/odnoklassnikiclient)
 
 [![Build Status](https://travis-ci.org/alxmsl/OdnoklassnikiClient.png?branch=master)](http://travis-ci.org/alxmsl/OdnoklassnikiClient)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alxmsl/OdnoklassnikiClient/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/alxmsl/OdnoklassnikiClient/?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/55b6116b6537620020000036/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55b6116b6537620020000036)
 
 [![Total Downloads](https://poser.pugx.org/alxmsl/odnoklassnikiclient/downloads)](https://packagist.org/packages/alxmsl/odnoklassnikiclient)
