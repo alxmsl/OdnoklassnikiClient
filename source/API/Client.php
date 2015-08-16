@@ -171,7 +171,7 @@ final class Client extends OAuthClient {
                 $url = self::ENDPOINT_API_GET;
                 break;
         }
-        return parent::getRequest($url);
+        return $this->getRequest($url);
     }
 
     /**
