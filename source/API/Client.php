@@ -235,7 +235,6 @@ final class Client extends OAuthClient {
                         throw new UnknownClientErrorException(sprintf('Error: %s description: %s', $Error->getError(),
                             $Error->getDescription()));
                 }
-                break;
             default:
                 throw new UnknownClientErrorException(sprintf('Unknown response format: %s',  json_encode($Token)));
         }

@@ -17,6 +17,8 @@
 
 namespace alxmsl\Odnoklassniki\OAuth2\Response;
 
+use RuntimeException;
+
 /**
  * Odnoklassniki OAuth server responses factory
  * @author alxmsl
@@ -27,6 +29,7 @@ final class ResponseFactory {
      * Create OK OAuth response instance
      * @param string $string response data
      * @return Code|Token|Error response instance
+     * @throws RuntimeException when response has a suspect string
      */
     public static function createResponse($string) {
         $Value = json_decode($string);
@@ -39,12 +42,15 @@ final class ResponseFactory {
             }
         } else {
             $value = parse_url($string, PHP_URL_QUERY);
-            switch (true) {
-                case strpos($value, 'error=') === 0:
-                    return Error::initializeByString($value);
-                case strpos($value, 'code=') === 0:
-                    return Code::initializeByString($value);
+            if ($value !== false) {
+                switch (true) {
+                    case strpos($value, 'error=') === 0:
+                        return Error::initializeByString($value);
+                    case strpos($value, 'code=') === 0:
+                        return Code::initializeByString($value);
+                }
             }
         }
+        throw new RuntimeException(sprintf('suspect data returned: %s', $string));
     }
 }
