@@ -2,7 +2,14 @@ OdnoklassnikiClient
 ===================
 
 [🇷🇺](/README.md)
+
+[![License](https://poser.pugx.org/alxmsl/odnoklassnikiclient/license)](https://packagist.org/packages/alxmsl/odnoklassnikiclient)
+[![Latest Stable Version](https://poser.pugx.org/alxmsl/odnoklassnikiclient/v/stable)](https://packagist.org/packages/alxmsl/odnoklassnikiclient)
+
 [![Build Status](https://travis-ci.org/alxmsl/OdnoklassnikiClient.png?branch=master)](http://travis-ci.org/alxmsl/OdnoklassnikiClient)
+[![Dependency Status](https://www.versioneye.com/user/projects/55b6116b6537620020000036/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55b6116b6537620020000036)
+
+[![Total Downloads](https://poser.pugx.org/alxmsl/odnoklassnikiclient/downloads)](https://packagist.org/packages/alxmsl/odnoklassnikiclient)
 
 Simple Odnoklassniki API client for:
 
