@@ -36,8 +36,8 @@ final class Client extends OAuthClient {
     /**
      * API endpoint constants
      */
-    const ENDPOINT_API_URL = 'http://api.odnoklassniki.ru',
-          ENDPOINT_API_GET = 'http://api.odnoklassniki.ru/fb.do';
+    const ENDPOINT_API_URL = 'https://api.odnoklassniki.ru',
+          ENDPOINT_API_GET = 'https://api.odnoklassniki.ru/fb.do';
 
     /**
      * API requests types constants
